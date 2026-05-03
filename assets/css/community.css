@@ -1,0 +1,100 @@
+.ccrm-topic-cards {
+    display: grid;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.ccrm-topic-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: box-shadow .2s ease;
+}
+
+.ccrm-topic-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.ccrm-topic-title a {
+    color: #0a4b78;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.ccrm-topic-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.ccrm-topic-author img {
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.ccrm-topic-card-footer {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Two-column layout */
+#ccrm-community-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Left column */
+#ccrm-community-left {
+    border-right: 1px solid #e5e7eb;
+    padding-right: 20px;
+}
+
+/* Right column */
+#ccrm-community-right {
+    padding-left: 20px;
+}
+
+/* Placeholder panel */
+.ccrm-thread-placeholder {
+    background: #f9fafb;
+    border: 1px dashed #cbd5e1;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    color: #64748b;
+    font-size: 1rem;
+}
+
+#ccrm-community-filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.ccrm-filter-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #0a4b78;
+    background: white;
+    color: #0a4b78;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all .2s ease;
+}
+
+.ccrm-filter-btn.active,
+.ccrm-filter-btn:hover {
+    background: #0a4b78;
+    color: white;
+}
