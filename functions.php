@@ -86,3 +86,5 @@ add_action( 'init', function() {
         'type'         => 'string',
     ]);
 });
+
+// add_filter( 'bbp_default_styles', '__return_false' );

@@ -98,3 +98,101 @@
     background: #0a4b78;
     color: white;
 }
+
+#ccrm-panel-community {
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+#ccrm-panel-community.ccrm-ready {
+    opacity: 1;
+}
+
+
+/* THREAD DETAIL PANEL */
+.ccrm-topic-detail {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Topic title */
+.ccrm-topic-detail h1,
+.ccrm-topic-detail .bbp-topic-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0a4b78;
+    margin-bottom: 20px;
+}
+
+/* Author + metadata row */
+.ccrm-topic-detail .bbp-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.ccrm-topic-detail .bbp-meta img.avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+/* Replies container */
+.ccrm-topic-detail .bbp-replies {
+    margin-top: 30px;
+}
+
+/* Each reply */
+.ccrm-topic-detail .bbp-reply {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Reply author row */
+.ccrm-topic-detail .bbp-reply-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.ccrm-topic-detail .bbp-reply-author img.avatar {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+
+/* Reply content */
+.ccrm-topic-detail .bbp-reply-content {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: #374151;
+}
+
+/* Remove bbPress default table layout */
+#bbpress-forums table {
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+#bbpress-forums td,
+#bbpress-forums th {
+    display: block;
+    border: none;
+    padding: 0;
+}
+
+.ccrm-topic-detail-header {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 20px;
+}

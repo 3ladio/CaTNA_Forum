@@ -28,14 +28,10 @@ do_action( 'bbp_template_before_forums_loop' ); ?>
 
 	</li><!-- .bbp-header -->
 
-	<li class="bbp-body">
-
+	<li class="bbp-body ccrm-forum-list">
 		<?php while ( bbp_forums() ) : bbp_the_forum(); ?>
-
 			<?php bbp_get_template_part( 'loop', 'single-forum' ); ?>
-
 		<?php endwhile; ?>
-
 	</li><!-- .bbp-body -->
 
 	<li class="bbp-footer">
