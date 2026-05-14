@@ -1,31 +1,34 @@
 <?php
 /**
- * Single Forum Row (CaTNA SPA override)
+ * Single Forum Row (CaTNA SPA)
  */
 
-$forum_id = bbp_get_forum_id();
-$topic_count = bbp_get_forum_topic_count( $forum_id );
-$reply_count = bbp_get_forum_reply_count( $forum_id );
-$last_active = bbp_get_forum_last_active_time( $forum_id );
+defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="ccrm-forum-card"
-     data-forum-id="<?php echo esc_attr( $forum_id ); ?>">
+<li id="bbp-forum-<?php bbp_forum_id(); ?>" <?php bbp_forum_class(); ?>>
 
-    <div class="ccrm-forum-title">
-        <?php echo esc_html( bbp_get_forum_title( $forum_id ) ); ?>
+    <div class="ccrm-forum-card">
+        <div class="ccrm-forum-info">
+            <h3 class="ccrm-forum-title"><?php bbp_forum_title(); ?></h3>
+            <p class="ccrm-forum-description"><?php bbp_forum_content(); ?></p>
+        </div>
+
+        <div class="ccrm-forum-stats">
+            <span class="ccrm-forum-topics"><?php bbp_forum_topic_count(); ?> topics</span>
+            <span class="ccrm-forum-posts"><?php bbp_forum_reply_count(); ?> posts</span>
+            <span class="ccrm-forum-freshness"><?php bbp_forum_last_active_time(); ?></span>
+        </div>
+
+        <div class="ccrm-forum-actions">
+            <button
+                class="ccrm-forum-open-btn"
+                data-forum-url="<?php bbp_forum_permalink(); ?>"
+                type="button"
+            >
+                View Topics →
+            </button>
+        </div>
     </div>
 
-    <div class="ccrm-forum-meta">
-        <span><?php echo $topic_count; ?> topics</span>
-        <span><?php echo $reply_count; ?> posts</span>
-        <span>Last active: <?php echo $last_active; ?></span>
-    </div>
-
-    <button class="ccrm-forum-open-btn"
-            data-forum-id="<?php echo esc_attr( $forum_id ); ?>"
-            data-forum-url="<?php bbp_forum_permalink(); ?>">
-        View Topics →
-    </button>
-
-</div>
+</li>

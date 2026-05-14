@@ -88,3 +88,8 @@ add_action( 'init', function() {
 });
 
 // add_filter( 'bbp_default_styles', '__return_false' );
+
+add_action( 'wp_enqueue_scripts', function() {
+    wp_dequeue_script( 'wp-interactivity' );
+    wp_deregister_script( 'wp-interactivity' );
+}, 999 );

@@ -5,7 +5,7 @@
  * It must NOT load the default bbPress archive wrapper.
  */
 
-echo '<!-- Using child theme archive-forum (SPA mode) -->';
+echo '<div style="background:red;color:white;padding:10px;">FORUM ARCHIVE LOADED</div>';
 
 ?>
 
@@ -28,7 +28,13 @@ echo '<!-- Using child theme archive-forum (SPA mode) -->';
         <div id="ccrm-community-left">
             <?php
                 // IMPORTANT: Load ONLY the forum loop, NOT the full archive
-                bbp_get_template_part( 'loop', 'forums' );
+                // bbp_get_template_part( 'loop', 'forums' );
+				if ( bbp_has_forums() ) {
+					bbp_get_template_part( 'loop', 'forums' );
+				} else {
+					echo '<p>No forums found.</p>';
+				}
+
             ?>
         </div>
 

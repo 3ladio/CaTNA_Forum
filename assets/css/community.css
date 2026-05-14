@@ -196,3 +196,29 @@
     border-bottom: 1px solid #e5e7eb;
     margin-bottom: 20px;
 }
+
+.ccrm-forum-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.ccrm-forum-title {
+    font-weight: 600;
+    margin: 0;
+}
+
+.ccrm-forum-actions button.ccrm-forum-open-btn {
+    background-color: #0073aa;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ccrm-forum-actions button.ccrm-forum-open-btn:hover {
+    background-color: #005f8d;
+}
