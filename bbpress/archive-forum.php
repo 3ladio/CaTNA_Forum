@@ -1,44 +1,35 @@
 <?php
 /**
- * bbPress - Forum Archive (CaTNA SPA version)
- * This template is used INSIDE the Member Profile SPA.
- * It must NOT load the default bbPress archive wrapper.
+ * bbPress - Forum Archive (CaTNA SPA simplified version)
+ * This template handles the 2-column core layout for the SPA.
  */
 
-echo '<div style="background:red;color:white;padding:10px;">FORUM ARCHIVE LOADED</div>';
-
+defined( 'ABSPATH' ) || exit;
 ?>
 
-<div id="ccrm-community-tabs">
-    <button class="ccrm-tab-btn active" data-tab="forums">Discussion Forums</button>
-    <button class="ccrm-tab-btn" data-tab="volunteer">Volunteer Opportunities</button>
-</div>
-
 <div id="ccrm-tab-forums" class="ccrm-tab active">
-
     <div id="ccrm-community-wrapper">
 
-        <!-- FILTERS -->
-        <div id="ccrm-community-filters">
-            <button class="ccrm-filter-btn active" data-filter="all">All Members</button>
-            <button class="ccrm-filter-btn" data-filter="my-groups">My Groups</button>
-        </div>
-
-        <!-- LEFT COLUMN: Forum List (NO bbPress wrappers) -->
         <div id="ccrm-community-left">
-            <?php
-                // IMPORTANT: Load ONLY the forum loop, NOT the full archive
-                // bbp_get_template_part( 'loop', 'forums' );
-				if ( bbp_has_forums() ) {
-					bbp_get_template_part( 'loop', 'forums' );
-				} else {
-					echo '<p>No forums found.</p>';
-				}
+            <div class="ccrm-topics-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0; font-size: 1.25rem; font-weight: 600; color: #111827;">Discussions</h3>
+                <button id="ccrm-new-thread-trigger" class="ccrm-filter-btn active" style="background-color: #008a76; color: #fff; border: none;">+ New Thread</button>
+            </div>
 
-            ?>
+            <div class="ccrm-topics-list">
+                <?php
+                // Force bbPress to pull all global topics directly into the sidebar loop
+                if ( bbp_has_topics( array( 'posts_per_page' => 20 ) ) ) :
+                    while ( bbp_topics() ) : bbp_the_topic();
+                        bbp_get_template_part( 'loop', 'single-topic' );
+                    endwhile;
+                else :
+                    echo '<p>No discussions found.</p>';
+                endif;
+                ?>
+            </div>
         </div>
 
-        <!-- RIGHT COLUMN: Thread Detail -->
         <div id="ccrm-community-right">
             <div class="ccrm-thread-placeholder">
                 <p>Select a thread to view the discussion.</p>
@@ -46,8 +37,4 @@ echo '<div style="background:red;color:white;padding:10px;">FORUM ARCHIVE LOADED
         </div>
 
     </div>
-</div>
-
-<div id="ccrm-tab-volunteer" class="ccrm-tab">
-    <?php get_template_part( 'volunteer-opportunities' ); ?>
 </div>

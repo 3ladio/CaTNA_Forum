@@ -4,7 +4,14 @@
 
     <?php while ( bbp_topics() ) : bbp_the_topic(); ?>
 
-        <div class="ccrm-topic-card" data-groups="<?php echo esc_attr( implode(',', (array) $groups ) ); ?>">
+        <?php
+        // Get the author's groups once
+        $groups = get_user_meta( bbp_get_topic_author_id(), 'ccrm_groups', true );
+        $groups_array = (array) $groups;
+        $groups_attr  = implode( ',', $groups_array );
+        ?>
+
+        <div class="ccrm-topic-card" data-groups="<?php echo esc_attr( $groups_attr ); ?>">
 
             <div class="ccrm-topic-card-header">
                 <h3 class="ccrm-topic-title">
@@ -21,9 +28,9 @@
 
                     <span class="ccrm-topic-group">
                         <?php
-                        // Example: show your CRM group name
-                        $groups = get_user_meta( bbp_get_topic_author_id(), 'ccrm_groups', true );
-                        echo $groups ? esc_html( implode(', ', (array) $groups ) ) : '—';
+                        echo ! empty( $groups_array )
+                            ? esc_html( implode( ', ', $groups_array ) )
+                            : '—';
                         ?>
                     </span>
                 </div>

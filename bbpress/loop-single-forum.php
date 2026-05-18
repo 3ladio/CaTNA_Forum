@@ -4,11 +4,12 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+$associated_group = get_post_meta( bbp_get_forum_id(), '_ccrm_group_id', true );
 ?>
 
 <li id="bbp-forum-<?php bbp_forum_id(); ?>" <?php bbp_forum_class(); ?>>
 
-    <div class="ccrm-forum-card">
+    <div class="ccrm-forum-card" data-groups="<?php echo esc_attr($associated_group); ?>">
         <div class="ccrm-forum-info">
             <h3 class="ccrm-forum-title"><?php bbp_forum_title(); ?></h3>
             <p class="ccrm-forum-description"><?php bbp_forum_content(); ?></p>
@@ -23,11 +24,12 @@ defined( 'ABSPATH' ) || exit;
         <div class="ccrm-forum-actions">
             <button
                 class="ccrm-forum-open-btn"
-                data-forum-url="<?php bbp_forum_permalink(); ?>"
+                data-forum-id="<?php bbp_forum_id(); ?>"
                 type="button"
             >
                 View Topics →
             </button>
+
         </div>
     </div>
 

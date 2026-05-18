@@ -1,15 +1,10 @@
 <?php
 /**
  * Template Name: Community
- * Description: Custom page template that loads the bbPress forum archive.
+ * Description: Custom page template that loads the bbPress forum archive inside the member portal.
  */
 
-get_header();
+defined( 'ABSPATH' ) || exit;
 
-// Optional: your custom wrapper markup
-echo '<!-- CaTNA Community Page Template Loaded -->';
-
-// Load the bbPress forum archive template (archive-forum.php)
+// We only want the core bbPress templates to load here, without duplicating the header/footer
 bbp_get_template_part( 'archive', 'forum' );
-
-get_footer();

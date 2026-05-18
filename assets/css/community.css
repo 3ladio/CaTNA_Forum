@@ -4,33 +4,69 @@
     margin: 20px 0;
 }
 
+/* --- Figma Topic Cards Styling --- */
 .ccrm-topic-card {
+    display: flex;
+    gap: 16px;
     background: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
     border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: box-shadow .2s ease;
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
 .ccrm-topic-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-color: #008a76;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.ccrm-topic-card.active {
+    border-color: #008a76;
+    background-color: #f0faf8;
+}
+
+/* Left Icon Circle Container */
+.ccrm-topic-icon-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.ccrm-topic-circle-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0faf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card Body Content */
+.ccrm-topic-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .ccrm-topic-title a {
-    color: #0a4b78;
+    color: #111827;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     font-weight: 600;
+    line-height: 1.4;
+    transition: color 0.15s ease;
+}
+
+.ccrm-topic-title a:hover {
+    color: #008a76;
 }
 
 .ccrm-topic-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 8px;
-    color: #555;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 4px;
 }
 
 .ccrm-topic-author img {
@@ -39,47 +75,72 @@
 }
 
 .ccrm-topic-card-footer {
-    margin-top: 15px;
     display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    color: #666;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.825rem;
+    color: #9ca3af;
 }
 
+/* --- Core Layout & Structure --- */
 /* Two-column layout */
 #ccrm-community-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 30px;
-    margin-top: 30px;
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    align-items: flex-start;
+    width: 100%;
 }
 
-/* Left column */
+/* Left Column: Topics Scrollable Panel */
 #ccrm-community-left {
-    border-right: 1px solid #e5e7eb;
-    padding-right: 20px;
+    flex: 1.2; /* Takes roughly 40-45% of width */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-right: 8px;
 }
 
-/* Right column */
+.ccrm-topics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Remove bullets from the forum list */
+.ccrm-forum-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Right Column: Discussion / Replies Sticky Panel */
 #ccrm-community-right {
-    padding-left: 20px;
+    flex: 1.8; /* Takes roughly 55-60% of width */
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    min-height: 400px;
 }
 
-/* Placeholder panel */
+/* Placeholder Frame */
 .ccrm-thread-placeholder {
-    background: #f9fafb;
-    border: 1px dashed #cbd5e1;
-    padding: 40px;
-    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 300px;
     text-align: center;
-    color: #64748b;
-    font-size: 1rem;
+    color: #6b7280;
 }
 
 #ccrm-community-filters {
     display: flex;
     gap: 12px;
     margin-bottom: 20px;
+    align-items: flex-start; /* Prevents buttons from stretching to full height */
 }
 
 .ccrm-filter-btn {
@@ -93,10 +154,13 @@
     transition: all .2s ease;
 }
 
-.ccrm-filter-btn.active,
-.ccrm-filter-btn:hover {
-    background: #0a4b78;
-    color: white;
+/* Clean Customizations for Primary Brand Buttons */
+.ccrm-filter-btn.active {
+    background-color: #008a76;
+    border-color: #008a76;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
 }
 
 #ccrm-panel-community {
@@ -199,10 +263,13 @@
 
 .ccrm-forum-card {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #ddd;
+    flex-direction: column; /* Stack info and stats */
+    gap: 10px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
 
 .ccrm-forum-title {
@@ -219,6 +286,126 @@
     cursor: pointer;
 }
 
+/* Make the 'View Topics' button full width or right-aligned */
+.ccrm-forum-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .ccrm-forum-actions button.ccrm-forum-open-btn:hover {
     background-color: #005f8d;
+}
+
+
+/* Hide Unwanted Default bbPress Overhead Components */
+#ccrm-community-container .bbp-breadcrumb,
+#ccrm-community-container .bbp-search-form,
+#ccrm-community-container .bbp-topic-pagination,
+#bbpress-forums li.bbp-header,
+#bbpress-forums li.bbp-footer {
+    display: none !important;
+}
+
+/* Ensure the topic detail fills the right side nicely */
+.ccrm-topic-detail {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+
+/* ==========================================================================
+   SPA Thread Creation Layout Adjustments
+   ========================================================================== */
+.ccrm-new-thread-container fieldset.bbp-form {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.ccrm-new-thread-container legend {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.ccrm-new-thread-container label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.ccrm-new-thread-container input[type="text"] {
+    width: 100% !important;
+    padding: 0.75rem 1rem !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    color: #1f2937 !important;
+    margin-bottom: 1.25rem !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.15s ease-in-out;
+}
+
+.ccrm-new-thread-container input[type="text"]:focus {
+    border-color: #008a76 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(0, 138, 118, 0.1) !important;
+}
+
+.ccrm-new-thread-container textarea.bbp-the-content {
+    width: 100% !important;
+    padding: 1rem !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    font-family: inherit !important;
+    line-height: 1.5 !important;
+    min-height: 160px !important;
+    box-sizing: border-box !important;
+    margin-bottom: 1.25rem !important;
+}
+
+.ccrm-new-thread-container textarea.bbp-the-content:focus {
+    border-color: #008a76 !important;
+    outline: none !important;
+}
+
+.ccrm-new-thread-container .bbp-submit-wrapper {
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+.ccrm-new-thread-container button.submit {
+    background-color: #008a76 !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 1.75rem !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    font-size: 0.95rem !important;
+    transition: background-color 0.15s ease;
+}
+
+.ccrm-new-thread-container button.submit:hover {
+    background-color: #006e5e !important;
+}
+
+.ccrm-new-thread-container .quicktags-toolbar {
+    background: #f3f4f6 !important;
+    border: 1px solid #e5e7eb !important;
+    border-bottom: none !important;
+    padding: 6px !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+}
+
+.ccrm-new-thread-container .wp-editor-container {
+    border-radius: 8px !important;
+    overflow: hidden !important;
 }
